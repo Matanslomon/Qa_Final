@@ -55,5 +55,32 @@ def count_match(driver):
     return float(number[-5:])
 
 
+def complete_test(driver):
+    add_Sauce_Labs_Onesie = driver.find_element(By.CSS_SELECTOR,'#add-to-cart-sauce-labs-onesie')
+    add_Sauce_Labs_Onesie.click()
+    time.sleep(2)
+    cart = driver.find_element(By.CSS_SELECTOR,'#shopping_cart_container > a')
+    cart.click()
+    time.sleep(2)
+    checkout = driver.find_element(By.CSS_SELECTOR,'#checkout')
+    checkout.click()
+    time.sleep(2)
+    firstname_box = driver.find_element(By.CSS_SELECTOR, '#first-name')
+    firstname_box.send_keys('mati')
+    lastname_box = driver.find_element(By.CSS_SELECTOR, '#last-name')
+    lastname_box.send_keys('sol')
+    zip_box = driver.find_element(By.CSS_SELECTOR, '#postal-code')
+    zip_box.send_keys('9664')
+    button_continue = driver.find_element(By.CSS_SELECTOR, '#continue')
+    button_continue.click()
+    time.sleep(2)
+    finish = driver.find_element(By.CSS_SELECTOR,'#finish')
+    finish.click()
+    time.sleep(2)
+    return driver.current_url
+
+
+
+
 
 

@@ -28,12 +28,26 @@ class TestSite:
 
 #----------------------- login test ------------------------------------------------------#
 
+#-------------------------total price ---------------------------------------------------#
+
     def test_count(self,driver,url):
         expected = 43.18
         open_site(driver,url)
         signin(driver,'standard_user','secret_sauce')
         actual =count_match(driver)
         assert actual == expected
+
+#-------------------------total price ---------------------------------------------------#
+
+#--------------------- complete test ----------------------------------------------------#
+
+    def test_complete_purchase(self,driver,url):
+        expected = 'https://www.saucedemo.com/checkout-complete.html'
+        open_site(driver,url)
+        signin(driver,'standard_user','secret_sauce')
+        actual = complete_test(driver)
+        assert actual == expected
+
 
 
 
