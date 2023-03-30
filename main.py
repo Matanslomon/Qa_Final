@@ -82,20 +82,22 @@ def complete_test(driver):
 
 
 def price_order(driver):
-    signin(driver, 'standard_user', 'secret_sauce')
-    time.sleep(2)
-    button = driver.find_element(By.CSS_SELECTOR, '#login-button')
-    button.click()
-    time.sleep(2)
-    name_button = driver.find_element(By.CSS_SELECTOR,
-                                      '#header_container > div.header_secondary_container > div > span > select')
-    name_button.click()
-    time.sleep(3)
-    price_button = driver.find_element(By.CSS_SELECTOR,
-                                       '#header_container > div.header_secondary_container > div > span > select')
-    price_button.click()
+    order_button = driver.find_element(By.CSS_SELECTOR,'#header_container > div.header_secondary_container > div > span > select > option:nth-child(4)')
+    order_button.click()
     time.sleep(4)
-    return driver.current_url
+    image_1 = driver.find_element(By.CSS_SELECTOR,'#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.pricebar > div')
+    image_1 = image_1.text
+    return float(image_1[-5:])
+    time.sleep(2)
+    image_2 = driver.find_element(By.CSS_SELECTOR,'#inventory_container > div > div:nth-child(6) > div.inventory_item_description > div.pricebar > div')
+    image_2 = image_2.text
+    return float(image_2[-4:])
+    time.sleep(4)
+    if image_1 > image_2:
+        print('pass')
+        return float(image_1[-5])
+
+
 
 
 def send_http_request(url):

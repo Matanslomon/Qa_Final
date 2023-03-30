@@ -50,14 +50,24 @@ class TestSite:
         actual = complete_test(driver)
         assert actual == expected
 
-    # --------------------- complete test --------------------------------------#
+# --------------------- complete test --------------------------------------#
 
-    def test_products_order(self, driver, url):
-        expected = 'https://www.saucedemo.com/inventory.html'
-        open_site(driver, url)
+#----------------------- high to low -----------------------------------------#
+
+    def test_high_to_low(self,driver,url):
+        expected = 49.99
+        open_site(driver,url)
         signin(driver, 'standard_user', 'secret_sauce')
         actual = price_order(driver)
         assert actual == expected
+
+
+
+
+
+
+
+
 
 
 class TestApi:
